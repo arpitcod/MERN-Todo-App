@@ -1,6 +1,8 @@
 import todoModel from "../model/todoModel.js";
 
 
+// post todo 
+
 export const createTodoController = async (rq,rs) =>{
     try {
         const {todo} = rq.body
@@ -106,6 +108,34 @@ export const deleteTodoController = async (rq,rs) =>{
         return rs.status(500).send({
             success:false,
             message:"error while deleting todo"
+        })
+    }
+}
+
+
+// get single todo todo 
+
+export const getSingleTodoController = async (rq,rs) =>{
+    try {
+
+        const {id} =rq.params;
+        const getTodo = await todoModel.findById(id);
+        if (!getTodo) {
+            return rs.status(404).send({
+                  success:false,
+                  message:"todo not found"
+            })
+        }
+        return rs.status(200).send({
+            success:true,
+            message:"single todo",
+            getTodo
+        })
+    } catch (error) {
+        console.log(error)
+        return rs.status(500).send({
+            success:false,
+            message:"error while geting todo"
         })
     }
 }

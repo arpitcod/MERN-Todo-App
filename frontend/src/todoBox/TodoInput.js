@@ -26,7 +26,7 @@ const TodoInput = ({getData}) => {
        }
     }
   return (
-    <div className=" ">
+    <div className="todo_input container">
       <form onSubmit={handleCreateTodo}>
         <div className="d-flex my-2">
           <input
@@ -39,7 +39,7 @@ const TodoInput = ({getData}) => {
             onChange={(e) => setTodo(e.target.value)}
           />
          
-        <button type="submit" className="btn btn-primary mx-3">
+        <button type="submit" className="create_button btn btn-primary mx-3">
         <MdCreate />
         </button>
         </div>
