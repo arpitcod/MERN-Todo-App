@@ -1,5 +1,8 @@
 import express from 'express';
 import { createTodoController, deleteTodoController, getSingleTodoController, getTodoController, updateTodoController } from '../controller/todoController.js';
+import { createRequire } from 'module';
+
+const require = createRequire(import.meta.url);
 
 const router = express.Router();
 
@@ -22,3 +25,4 @@ router.get('/get-single-todo/:id',getSingleTodoController)
 
 
 export default router;
+
